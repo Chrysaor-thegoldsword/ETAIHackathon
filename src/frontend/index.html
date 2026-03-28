@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ET Money Mentor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/ui-v2.css?v=20260329" />
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand-block">
+                <p class="overline">Economic Times ecosystem concept</p>
+                <h1>ET Money Mentor</h1>
+                <p class="subtitle">AI financial advisor for guided planning, health scoring, tax comparison, portfolio suggestions, and report generation.</p>
+            </div>
+            <div class="pill-row">
+                <span class="pill">Hackathon demo</span>
+                <span class="pill">India-first finance</span>
+                <span class="pill">Source-backed planning</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="overline">What this does</p>
+                <h2>Interview the client first. Show the plan clearly. Keep the next action obvious.</h2>
+                <p>The assistant collects financial details, optional documents, goals, and tax choices, then turns them into a score, red flags, milestones, tax advice, portfolio allocation, and a downloadable report.</p>
+            </div>
+            <div class="hero-stats">
+                <article class="stat-card">
+                    <span>Health score</span>
+                    <strong id="hero-score">--</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Recommended regime</span>
+                    <strong id="hero-tax">Pending</strong>
+                </article>
+                <article class="stat-card">
+                    <span>Monthly investable surplus</span>
+                    <strong id="hero-surplus">Pending</strong>
+                </article>
+            </div>
+        </section>
+
+        <main class="layout">
+            <aside class="chat-panel panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="overline">Advisor chat</p>
+                        <h3>Client interview</h3>
+                    </div>
+                    <div class="progress-box">
+                        <div class="progress-label">
+                            <span>Profile completion</span>
+                            <strong id="progress-label">0%</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chat-container" class="chat-stream"></div>
+
+                <form id="composer" class="composer">
+                    <input type="text" id="user-input" placeholder="Type your answer here..." autocomplete="off" />
+                    <button type="submit" id="send-btn">Send</button>
+                </form>
+
+                <div class="upload-card">
+                    <label for="document-input">Upload ITR / Form 16 / statement</label>
+                    <div class="upload-row">
+                        <input id="document-input" type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" />
+                        <button id="upload-btn" type="button">Upload</button>
+                    </div>
+                    <p id="upload-status" class="helper-text">Optional: upload documents to prefill parts of the profile.</p>
+                </div>
+
+                <button id="report-btn" class="report-btn" disabled>Download detailed report</button>
+            </aside>
+
+            <section class="dashboard-panel">
+                <div class="summary-row">
+                    <article class="panel score-panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Financial wellbeing</p>
+                                <h3 id="score-band">Pending</h3>
+                            </div>
+                            <span id="status-chip" class="pill muted">Collecting profile</span>
+                        </div>
+                        <div class="score-wrap">
+                            <div id="score-ring" class="score-ring">
+                                <span id="score-value">--</span>
+                            </div>
+                            <div class="score-copy">
+                                <p id="score-summary" class="body-copy">Start the chat to generate the health score.</p>
+                                <div id="score-metrics" class="metric-grid"></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="panel tax-panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Tax snapshot</p>
+                                <h3>Old vs New</h3>
+                            </div>
+                        </div>
+                        <div id="tax-cards" class="tax-grid empty-note">Tax projections will appear after onboarding is complete.</div>
+                    </article>
+                </div>
+
+                <div class="detail-grid">
+                    <article class="panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Red flags</p>
+                                <h3>What needs attention</h3>
+                            </div>
+                        </div>
+                        <div id="red-flags" class="list-block empty-note">Add the client profile to surface stress points and missing buffers.</div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Goal milestones</p>
+                                <h3>Monthly plan</h3>
+                            </div>
+                        </div>
+                        <div id="goal-list" class="list-block empty-note">The advisor will convert goals into monthly contributions and milestone notes.</div>
+                    </article>
+
+                    <article class="panel wide">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Ideal portfolio</p>
+                                <h3>Allocation and monthly split</h3>
+                            </div>
+                        </div>
+                        <div id="allocation-bars" class="allocation-stack empty-note">Portfolio split will appear once goals and risk appetite are known.</div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Watchlist</p>
+                                <h3>Top 5 choices</h3>
+                            </div>
+                        </div>
+                        <div id="watchlist" class="list-block empty-note">Research-backed instruments with credit or quality context will appear here.</div>
+                    </article>
+
+                    <article class="panel">
+                        <div class="panel-head compact">
+                            <div>
+                                <p class="overline">Reference sources</p>
+                                <h3>Official and research links</h3>
+                            </div>
+                        </div>
+                        <div id="source-list" class="list-block empty-note">Official tax references and research links will appear here.</div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/ui-v2.js?v=20260329"></script>
+</body>
+</html>
