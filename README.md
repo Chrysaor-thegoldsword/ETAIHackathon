@@ -23,12 +23,44 @@ ET Money Mentor is a hackathon-ready AI financial advisor prototype for the Econ
 
 ## Run locally
 
+This project requires a `GROQ_API_KEY` for the chatbot to work properly.
+
 ```bash
 python -m pip install -r requirements.txt
 uvicorn src.main:app --reload
 ```
 
 Then open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Groq API key setup
+
+You need a Groq API key to run the LLM-powered advisor locally.
+
+Steps to get the key:
+
+1. Go to the [Groq Console](https://console.groq.com/).
+2. Sign in or create a Groq account.
+3. Open the [API Keys page](https://console.groq.com/keys).
+4. Create a new API key.
+5. Copy the key and keep it private.
+
+Recommended setup:
+
+1. Copy `.env.example` to `.env`.
+2. Add your Groq key to `.env`.
+3. Optionally keep the default model or change it.
+
+Example:
+
+```env
+GROQ_API_KEY=your_real_groq_key_here
+GROQ_MODEL=llama-3.1-8b-instant
+```
+
+Official Groq references:
+
+- [Groq Quickstart](https://console.groq.com/docs/quickstart)
+- [Groq OpenAI Compatibility](https://console.groq.com/docs/openai)
 
 ## Run with the BAT file
 
