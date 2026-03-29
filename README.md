@@ -82,6 +82,8 @@ You can also run it from PowerShell:
 
 ## Main files
 
+- `SYSTEM_ARCHITECTURE.md` - Mermaid system architecture diagram
+- `SYSTEM_ARCHITECTURE.png` - PNG export of the system architecture diagram
 - `src/main.py` - FastAPI app and API routes
 - `src/agents/conversation.py` - guided advisor flow
 - `src/agents/health_score.py` - score engine and red flags
